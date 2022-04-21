@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     std::string lineTxt;
     std::string data;
     std::stringstream ss;
-    std::vector<std::vector<int>> matrix;
+    std::vector<std::vector<int> > matrix;
     std::vector<int> row;
 
     std::ifstream file("Project-2-input-example.txt");
@@ -25,8 +25,10 @@ int main(int argc, char *argv[])
 
     while(std::getline(file, lineTxt)){
         //IF LINE BEGIN WITH '%' OR IS BLANK, SKIP TO NEXT LINE.
-        if (lineTxt[0] == '%' || lineTxt[0] == 0 )
+        //std::cout << lineTxt << std::endl;
+        if (lineTxt[0] == '%' || lineTxt[0] == '\n' || lineTxt[0] == '\r' )
             continue;
+
         else{
             if (lineTxt.find("num_processes") != std::string::npos){
                 //std::cout << lineTxt.back() << std::endl;
@@ -45,6 +47,7 @@ int main(int argc, char *argv[])
                 ss << lineTxt;
                 int counter = 0;
                 while(std::getline(ss, data, ',') && counter < resourceNum){
+                    std::cout << "data: " << data << std::endl;
                     unitsPerResource.push_back(stoi(data));
                     std::cout << unitsPerResource[counter] << std::endl;
                     if (counter > resourceNum)
@@ -59,7 +62,7 @@ int main(int argc, char *argv[])
                 ss << lineTxt;
                 matrix.push_back(row);
                 while(std::getline(ss,data, ',')){
-                    //std::cout << data << " ";
+                    std::cout << data << std::endl;;
                     matrix.back().push_back(stoi(data));
                 }
                 //std::cout << std::endl;
