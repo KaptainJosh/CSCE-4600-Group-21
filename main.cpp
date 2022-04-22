@@ -4,11 +4,15 @@
 #include <sstream>
 #include <vector>
 
-int main(int argc, char *argv[])
+int main(int agrc, char *argv[])
 {
+	if (agrc == 1){
+		std::cout << "ERROR! PLEASE ENTER A VALID COMMAND LINE INPUT" << std::endl;
+		std::cout << "Example: ./main Project-2-input-example.txt" << std::endl;
+		return 1;
+	}
     int processNum = 0, resourceNum = 0, lineNum = 1;
-    std::string lineTxt;
-    std::string data;
+    std::string lineTxt, data;
     std::vector<int> unitsPerResource;
     std::vector<std::vector<int> > matrix;
     std::vector<int> row;
@@ -76,7 +80,8 @@ int main(int argc, char *argv[])
             //std::cout << "Line: " << lineTxt << std::endl;
         }
     }
-
+	
+	std::cout << std::endl;
 	//Testing printing units per resource
 	std::cout << "PRINTING UNITS PER RESOURCE" << std::endl;
 	for(auto i : unitsPerResource){
