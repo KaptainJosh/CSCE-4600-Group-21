@@ -24,15 +24,15 @@ int main(int agrc, char *argv[])
     std::vector<int> row;
 	std::vector<std::string> result;
 	
-    std::ifstream file("Project-2-input-example.txt");
+    std::ifstream file(argv[1]);
     if (!file)
     {
         std::cout << "Error. File could not be opened\n";
         std::cout << "Please check if file exist or filename was entered correctly and try again";
         return 2;
     }
-    else
-        std::cout << "File opened\n";
+    //else
+    //   std::cout << "File opened\n";
 
     while(std::getline(file, lineTxt)){
         //IF LINE BEGIN WITH '%' OR IS BLANK, SKIP TO NEXT LINE.
@@ -48,7 +48,7 @@ int main(int agrc, char *argv[])
 					result.push_back(data);
 				}
 				processNum = stoi(result[1]);
-                std::cout << "Process Num: " << processNum << std::endl;
+                //std::cout << "Process Num: " << processNum << std::endl;
                 lineNum++;
                 continue;
 
@@ -59,7 +59,7 @@ int main(int agrc, char *argv[])
 					result.push_back(data);
 				}
 				resourceNum = stoi(result[1]);
-                std::cout << "Resource Num: " << resourceNum << std::endl;
+                //std::cout << "Resource Num: " << resourceNum << std::endl;
                 lineNum++;
                 continue;
             }else if (lineNum == 3) {
@@ -71,7 +71,7 @@ int main(int agrc, char *argv[])
                 int counter = 0;
 				//std::cout << "Counter: " << counter << std::endl;
                 while(std::getline(ss, data, ',') && counter < resourceNum){
-                    std::cout << "data: " << data << std::endl;
+                    //std::cout << "data: " << data << std::endl;
                     unitsPerResource.push_back(stoi(data));
                     //std::cout << "Data: " << unitsPerResource[counter] << std::endl;
                     counter++;
@@ -91,7 +91,7 @@ int main(int agrc, char *argv[])
         }
     }
 	
-	std::cout << std::endl;
+	/*std::cout << std::endl;
 	//Testing printing units per resource
 	std::cout << "PRINTING UNITS PER RESOURCE" << std::endl;
 	for(auto i : unitsPerResource){
@@ -105,10 +105,10 @@ int main(int agrc, char *argv[])
             std::cout << matrix[i][j] << " ";
         }
         std::cout << std::endl;
-    }
+    }*/
 
     file.close();
-    std::cout << "File closed\n";
+    //std::cout << "File closed\n";
 
     //Perform BFS
     std::vector<std::set<int> > reachableSets;
@@ -118,9 +118,9 @@ int main(int agrc, char *argv[])
     bool hasKnot = checkForKnots(reachableSets);
 
     if (hasKnot)
-        std::cout << "System is in a state of deadlock\n";
+        std::cout << "System is in a deadlock state\n";
     else
-        std::cout << "System is not in a state of deadlock\n";
+        std::cout << "System is in a safe state\n";
 
     return 0;
 }

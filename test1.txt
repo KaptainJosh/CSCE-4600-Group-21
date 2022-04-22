@@ -1,0 +1,12 @@
+num_processes=2
+num_resources=2
+
+1,1
+
+%p1, p2, r1, r2
+1,0,0,1
+0,1,1,0
+1,0,1,0
+0,1,0,1
+
+%Should output that the system is in a state of deadlock

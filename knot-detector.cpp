@@ -25,8 +25,16 @@ bool checkForKnots(std::vector<std::set<int> > reachableSets)
 
 		//If no reachable sets were different, i.e., all were the same, then there is a knot at this vertex
 		//So, return true - no need to do any more work
-		if (knotAtVertex)
+		//Also check that reachable set is more than one vertex - otherwise, there is a trivial "knot"
+		if (knotAtVertex && reachableSet.size() > 1)
 		{
+			std::cout << "Knot: ";
+			for (auto el : reachableSet)
+			{
+				std::cout << el << ", ";
+			}
+			std::cout << "\n";
+
 			return true;
 		}
 	}

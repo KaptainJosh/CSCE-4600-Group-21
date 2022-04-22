@@ -1,0 +1,12 @@
+num_processes=3
+num_resources=2
+
+1,2
+
+1,0,0,0,1
+0,1,0,1,0
+0,0,1,0,0
+1,0,0,1,0
+0,1,1,0,1
+
+%Should output that system is in a safe state
