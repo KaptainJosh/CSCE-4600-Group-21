@@ -31,7 +31,7 @@ int main(int agrc, char *argv[])
     while(std::getline(file, lineTxt)){
         //IF LINE BEGIN WITH '%' OR IS BLANK, SKIP TO NEXT LINE.
         //std::cout << lineTxt << std::endl;
-        if (lineTxt[0] == '%' || lineTxt.length() == 0)
+        if (lineTxt[0] == '%' || lineTxt.length() == 0 || lineTxt[0] == '\r' )
             continue;
         else{
             if (lineTxt.find("num_processes") != std::string::npos){
