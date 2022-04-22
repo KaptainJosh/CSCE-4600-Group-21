@@ -28,7 +28,7 @@ void bfs(vector<vector<int> >& adj, int dimension, vector<set<int> >& num)
 		visited[start] = true;
 
 		int vis;
-		set<int> nums;
+		std::set<int> nums;
 		while (!q.empty()) {
 			vis = q[0];
 			//set<int> nums;
@@ -68,7 +68,7 @@ void bfs(vector<vector<int> >& adj, int dimension, vector<set<int> >& num)
 }
 
 // Driver code
-int main()
+/**int main()
 {
 	// number of vertices
 	int v = 6;
@@ -107,5 +107,5 @@ int main()
 	// }
 
 	return 0;
-}
+}**/
 

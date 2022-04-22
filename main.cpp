@@ -4,6 +4,9 @@
 #include <sstream>
 #include <vector>
 
+#include "knot-detector.hpp"
+#include "bfs.hpp"
+
 int main(int argc, char *argv[])
 {
     int processNum = 0, resourceNum = 0, lineNum = 1;
@@ -82,5 +85,18 @@ int main(int argc, char *argv[])
 
     file.close();
     std::cout << "File closed\n";
+
+    //Perform BFS
+    std::vector<std::set<int> > reachableSets;
+    bfs(matrix, matrix.size(), reachableSets);
+
+    //Check for knots
+    bool hasKnot = checkForKnots(reachableSets);
+
+    if (hasKnot)
+        std::cout << "System is in a state of deadlock\n";
+    else
+        std::cout << "System is not in a state of deadlock\n";
+
     return 0;
 }
